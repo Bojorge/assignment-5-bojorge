@@ -18,12 +18,12 @@ jobs:
             run: ./unit-test.sh
 
     full-test:
-      container: cuaesd/aesd-autotest:24-assignment4
+      container: cuaesd/aesd-autotest:24-assignment5
       runs-on: self-hosted
       steps:
         - uses: actions/checkout@v2
         - name: Install SSH client
-          run: apt-get update && apt-get install -y openssh-client
+          run: apt-get update && apt-get install -y openssh-client netcat-openbsd valgrind
         - name: Setup SSH key
           uses: webfactory/ssh-agent@v0.9.1
           with:
