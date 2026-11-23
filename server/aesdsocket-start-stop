@@ -1,0 +1,21 @@
+#!/bin/sh
+
+case "$1" in
+    start)
+        echo "Starting aesdsocket"
+        # -S (start), -n (name), -x (executable), -- -d (argumentos para el programa)
+        start-stop-daemon -S -n aesdsocket -x /usr/bin/aesdsocket -- -d
+        ;;
+    stop)
+        echo "Stopping aesdsocket"
+        # -K (kill/stop), -n (name), -s TERM (enviar SIGTERM para que limpie y borre el archivo)
+        start-stop-daemon -K -n aesdsocket -s TERM
+        ;;
+    *)
+        echo "Usage: $0 {start|stop}"
+        exit 1
+        ;;
+esac
+
+exit 0
+
